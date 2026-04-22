@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  virtual_plc:
+
+    build: .
+    container_name: modbus_mirage
+    
+    restart: unless-stopped
+
+    ports:
+      - "502:502"
+
+    command: ["python", "modbus_mirage.py", "--ip", "0.0.0.0", "--port", "502", "--quiet"]
